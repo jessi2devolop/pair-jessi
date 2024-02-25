@@ -153,10 +153,21 @@ router.get('/', async (req, res) => {
 				if (connection == "open") {
 					await delay(10000);
 					let jesname = "jessipair;"
+					let messg = "\n\n*Hey there! Welcome to JessiMD\n\nDon't share this code to anyone. \nUpload this file to your forked repository sessions folder. Click delopy button\n\nfrok repository ➬https://github.com/whiteshadowofficial/Jessi-md\n\nCopyright © 2021 All right reserved\n\nCʀᴇᴀᴛᴇᴅ Bʏ ᴍʀ.ᴡʜɪᴛᴇ ꜱʜᴀᴅᴏᴡ x ᴘʀᴇʙᴀᴛʜ_ꜱᴀᴠ- 2024\n\n"
 					let sessionjessi = fs.readFileSync(__dirname+`/temp/${id}/creds.json`);
 					const output = await pastebin.createPasteFromFile(__dirname+`/temp/${id}/creds.json`, "pastebin-js test", null, 1, "N");
 					await session.sendMessage(session.user.id, {
-						text: jesname+output.split('/')[3]
+						text: messg+jesname+output.split('/')[3], 
+						contextInfo: { 
+            externalAdReply: {
+                title: "Jessi-MD",
+                body: "𝚆𝚑𝚊𝚝𝚜𝙰𝚙𝚙 𝙱𝚘𝚝",
+                thumbnailUrl: "https://tinyurl.com/24odlsqs",
+                mediaType: 1,
+                mediaUrl: "https://github.com/whiteshadowofficial/Jessi-md",
+                sourceUrl: "https://github.com/whiteshadowofficial/Jessi-md",
+            } 
+        } 
 					})
 					await session.sendMessage(session.user.id, { document: sessionjessi, mimetype: `application/json`, fileName: `creds.json` })
 					await delay(100);
